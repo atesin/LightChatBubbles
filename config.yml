@@ -1,0 +1,25 @@
+# LightChatBubbles plugin configuration file
+
+# since name tags are visible to everyone in world, only server wide configurations are possible
+# read speed analysis taken from: http://iovs.arvojournals.org/article.aspx?articleid=2166061
+
+# floating text lines in chat bubble above player's head
+maxBubbleHeight: 3
+
+# max chat bubbles width, longer words won't be truncated and will still appear whole in a single line
+maxBubbleWidth: 15
+
+# ticks to wait between bubble chats, about a blink, default 5 ticks (250 msec)
+bubblesInterval: 5
+
+# characters per minute, considering an average of 5 chars per word (4 letters + 1 space)
+readSpeed: 800
+
+# i had noted there is an additional previous time of about 2 word (10 chars) to notice message and position eyes
+handicapChars: 10
+
+# will chat messages only appear in chat bubbles and won't echo on chat window?
+disableChatWindow: false
+
+# chat bubbles text format, omit section signs, see http://minecraft.gamepedia.com/Formatting_codes
+chatFormat: EL
