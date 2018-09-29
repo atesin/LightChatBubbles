@@ -1,4 +1,5 @@
 # LightChatBubbles plugin configuration file
+# Read project page for aditional info = https://dev.bukkit.org/projects/light-chat-bubbles
 
 # since name tags are visible to everyone in world, only server wide configurations are possible
 # read speed analysis taken from: http://iovs.arvojournals.org/article.aspx?articleid=2166061
