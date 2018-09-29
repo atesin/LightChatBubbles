@@ -1,3 +1,5 @@
 name: LightChatBubbles
 main: cl.netgamer.lightchatbubbles.Main
 version: 4
+
+# remember to delete useless files from inside jar after compiling
