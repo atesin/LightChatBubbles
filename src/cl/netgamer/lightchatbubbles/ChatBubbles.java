@@ -39,7 +39,7 @@ public class ChatBubbles
 		Entity vehicle = player;
 		for (int i = chatLines.length -1 ; i >= 0 ; --i)
 			vehicle = spawnNameTag(vehicle, chatLines[i], spawnPoint, duration);
-		return (duration);
+		return duration;
 	}
 	
 	// spawn a nameplate and return it to caller so it can stack together
@@ -47,7 +47,7 @@ public class ChatBubbles
 	{
 		// spawn name tag away from player in same chunk, then set invisible
 		AreaEffectCloud nameTag = (AreaEffectCloud) spawnPoint.getWorld().spawnEntity(spawnPoint, EntityType.AREA_EFFECT_CLOUD);
-		nameTag.setParticle(Particle.ITEM_TAKE);
+		nameTag.setParticle(Particle.TOWN_AURA); // ITEM_TAKE was deprecated so i found mycelium (TOWN_AURA) has the tiniest particle
 		nameTag.setRadius(0);
 		
 		// mount over vehicle and set name
