@@ -31,7 +31,7 @@ chatFormat: ""
 messageFormat: "{message}"
 
 # bubble format. Applied to every bubble.
-# examples: "&e{player} said: &f{message}", "{player}: {message}", "&l{message}", "SERVER"
+# examples: "&e{player} said: &f{message}", "{player}: {message}", "&l{message}"
 bubbleFormat: "{message}"
 
 # row format. Applied for each row.
