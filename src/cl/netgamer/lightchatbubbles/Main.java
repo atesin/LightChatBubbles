@@ -28,7 +28,7 @@ public final class Main extends JavaPlugin implements Listener
 	{
 		if (!e.isCancelled())
 		{
-			buffer.receiveChat(e.getPlayer(), e.getMessage());
+			buffer.receiveChat(e.getPlayer(), e.getMessage(), e.getFormat());
 			
 			if(disableChatWindow)
 				e.setCancelled(true);

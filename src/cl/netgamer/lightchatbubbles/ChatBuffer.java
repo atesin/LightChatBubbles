@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
+import org.bukkit.ChatColor;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -16,6 +18,8 @@ public class ChatBuffer
 	private int maxBubbleWidth;
 	private int bubblesInterval;
 	private Map<String, Queue<String>> chatQueue = new HashMap<String, Queue<String>>();
+	private String bubbleFormat;
+	private String messageFormat;
 	
 	// constructor
 	ChatBuffer(Main plugin)
@@ -23,12 +27,22 @@ public class ChatBuffer
 		maxBubbleHeight = plugin.getConfig().getInt("maxBubbleHeight");
 		maxBubbleWidth = plugin.getConfig().getInt("maxBubbleWidth");
 		bubblesInterval = plugin.getConfig().getInt("bubblesInterval");
+		bubbleFormat = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("bubbleFormat"));
+		messageFormat = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messageFormat"));
 		this.plugin = plugin;
 	}
 	
 	// wrap pre-trimmed chat and put in a player buffer
-	void receiveChat(Player player, String msg)
+	void receiveChat(Player player, String msg, String format)
 	{
+		if(messageFormat.equals("SERVER")) {
+			msg = String.format(format, player.getName(), msg);
+		} else {
+			msg = messageFormat
+					.replaceAll("\\{player}", player.getDisplayName())
+					.replaceAll("\\{message}", msg);
+		}
+		
 		// most probable case, 1 line chat
 		if (msg.length() <= maxBubbleWidth)
 		{
@@ -69,6 +83,9 @@ public class ChatBuffer
 	// get word wrapped chat and queues in a player buffer, creates if not exists
 	private void queueChat(Player player, String chat)
 	{
+		chat = bubbleFormat
+			.replaceAll("\\{player}", player.getDisplayName())
+			.replaceAll("\\{message}", chat);
 		// if no player buffer yet, create it and schedule this message
 		String playerId = ""+player.getUniqueId();
 		if (!chatQueue.containsKey(playerId))
