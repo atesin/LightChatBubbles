@@ -22,5 +22,17 @@ handicapChars: 10
 # will chat messages only appear in chat bubbles and won't echo on chat window?
 disableChatWindow: false
 
-# chat bubbles text format, omit section signs, see http://minecraft.gamepedia.com/Formatting_codes
-chatFormat: EL
+# chat formatting codes for messages, without &. Examples: "EL", "C", "L"
+# consider using "&e&l{message}" in chatFormat. This is here only for backwards compatibility purposes
+chatFormat: ""
+
+# chat message format. Applied for each message. Set to "SERVER" to make it the same as in chat.
+# examples: "&e{player} said: &f{message}", "{player}: {message}", "&l{message}", "SERVER"
+messageFormat: "{message}"
+
+# bubble format. Applied to every bubble.
+# examples: "&e{player} said: &f{message}", "{player}: {message}", "&l{message}"
+bubbleFormat: "{message}"
+
+# row format. Applied for each row.
+rowFormat: "&e&l{message}"
